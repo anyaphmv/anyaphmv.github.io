@@ -127,8 +127,6 @@
                                     @foreach($resumes as $resume)
                                         @if($resume->colom_id == $col->id and $resume->id_vac == $vacancy->vacancy_id)
                                             <div class="block" id="{{$resume->resume_id}}">
-                                                    {{$resume->resume_id}}
-                                                    {{$col->id}}
                                                     <form method="post" action="{{Route('FormRecords',[$resume->resume_id,$vacancy->vacancy_id])}}">
                                                         @csrf
                                                         <div class="flex flex-row border border-1 border-blue-600 p-2 mb-2 w-[210px]">

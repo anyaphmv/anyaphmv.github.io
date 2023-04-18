@@ -138,4 +138,15 @@ class HRController extends Controller
         $countCol = Colomn::count();
         return redirect()->route('showKanban', ['vacancies'=>$vacancies, 'resumes'=>$resumes,'cols'=>$cols, 'countCol'=>$countCol]);
     }
+    public function movingRecord($resume_id, $colom_id, $id_vac){
+        $res = Resume::find($resume_id);
+        $res->colom_id = $colom_id;
+        $res->id_vac = $id_vac;
+        $res->save();
+        $vacancies = Vacancy::where('status_id','=','1')->get();
+        $resumes = Resume::all();
+        $cols = Colomn::all();
+        $countCol = Colomn::count();
+        return redirect()->route('showKanban', ['vacancies'=>$vacancies, 'resumes'=>$resumes,'cols'=>$cols, 'countCol'=>$countCol]);
+    }
 }

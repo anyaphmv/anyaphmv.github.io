@@ -16,6 +16,7 @@ import { createApp } from 'vue';
 const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
+import {getElement} from "bootstrap/js/src/util";
 app.component('example-component', ExampleComponent);
 
 /**
@@ -37,3 +38,37 @@ app.component('example-component', ExampleComponent);
  */
 
 app.mount('#app');
+
+$( function() {
+
+    $('.block').draggable({revert: true,zIndex: 100,revertDuration: 0,helper: "clone"});
+
+    $( ".sortable" ).droppable({
+        accept: ".block",
+        over: function( event, ui )
+        {
+            $(this).addClass('hover');
+        },
+        out: function( event, ui )
+        {
+            $(this).removeClass('hover');
+        },
+        drop:function( event, ui)
+        {
+            let colom = $(this).data('block');
+            if((colom!=1) && (colom!=2) && (colom!=3) && (colom!=4)) {
+                $(this).prepend(ui.draggable);
+                let id = $(this).children().attr('id');
+                let colom_id = $(this).data('block');
+                let id_vac = $(this).attr('id');
+                url = url.replace(':id', id);
+                url = url.replace(':colom_id', colom_id);
+                url = url.replace(':id_vac', id_vac);
+                window.location.href = url;
+            } else {
+                alert('Блок нельзя переместить в эту колонку');
+            }
+            $(this).removeClass('hover');
+        }
+    });
+});

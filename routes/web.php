@@ -53,6 +53,7 @@ Route::post('/revisionResum/{resume_id}/{vacancy_id}', [CompanyController::class
 Route::get('/documents', [CompanyController::class, 'showDocumentsPage'])->name('showDocumentsPage');
 Route::get('/docAct/{id}', [CompanyController::class, 'pdfExportAct'])->name('pdfExportAct');
 Route::get('/docBill/{id}', [CompanyController::class, 'pdfExportBill'])->name('pdfExportBill');
+Route::get('/movRec/{resume_id}/{colom_id}/{id_vac}', [HRController::class, 'movingRecord'])->name('movingRecord');
 
 Auth::routes();
 

@@ -56,7 +56,7 @@ $( function() {
         drop:function( event, ui)
         {
             let colom = $(this).data('block');
-            if((colom!=1) && (colom!=2) && (colom!=3) && (colom!=4)) {
+            if((colom!=2) && (colom!=3) && (colom!=4)) {
                 $(this).prepend(ui.draggable);
                 let id = $(this).children().attr('id');
                 let colom_id = $(this).data('block');

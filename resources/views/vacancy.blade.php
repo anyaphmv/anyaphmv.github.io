@@ -20,6 +20,27 @@
             <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Поиск</button>
         </div>
     </form>
+    @if($errors->any())
+        <div class="p-4 my-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+            <span class="font-medium">{{$errors->first()}}</span></div>
+    @endif
+    <span class="mx-2 xl:mx-auto text-xl font-semibold text-blue-600">Фильтры</span>
+    <form action="filters" method="get">
+        <span class="mx-2 xl:mx-auto text-lg font-normal text-sky-900">Город</span>
+        <select name="place"
+                class="mt-4 text-blue-700 border-1 border-blue-700 border hover:border-blue-900 hover:border-2 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center">
+            <option class="block px-4 py-2 hover:bg-gray-100"> </option>
+            @foreach($citys as $city)
+                <option class="block px-4 py-2 hover:bg-gray-100">
+                    {{$city->place}}
+                </option>
+            @endforeach
+        </select>
+        <span class="mx-2 xl:mx-auto text-lg font-normal text-sky-900 xl:ml-8">Зарплата</span>
+        <input type="number" class="bg-white border border-blue-600 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-[300px] p-2.5" name="prices1" placeholder="от">
+        <input type="number" class="bg-white border border-blue-600 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-[300px] p-2.5" name="prices2" placeholder="до">
+        <button type="submit" class="w-[150px] justify-center items-center py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">Применить</button>
+    </form>
     <div class="flex flex-wrap my-4 ml-2 lg:ml-auto justify-center">
         @if ($vacancies)
             @foreach($vacancies as $vacancy)

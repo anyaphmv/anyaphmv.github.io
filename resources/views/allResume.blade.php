@@ -10,7 +10,7 @@
 @include('header')
 <div class="vacancy my-8 mx-auto max-w-screen-xl">
     <span class="mx-2 xl:mx-auto my-4 text-2xl font-semibold tracking-tight text-blue-600 md:text-4xl md:font-bold">Резюме</span>
-    <form class="mx-2 xl:mx-auto mt-4" action="{{Route('search')}}" method="get">
+    <form class="mx-2 xl:mx-auto mt-4" action="{{Route('searchResum')}}" method="get">
         <label for="search" class="mb-4 text-sm font-medium text-gray-900 sr-only">Search</label>
         <div class="relative">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -19,6 +19,22 @@
             <input type="search" id="search" name="search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Введите название профессии..." required>
             <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Поиск</button>
         </div>
+    </form>
+    <form action="filterRes" method="get">
+        <span class="mx-2 xl:mx-auto text-lg font-normal text-sky-900">Профессия</span>
+        <select name="staff"
+                class="mt-4 text-blue-700 border-1 border-blue-700 border hover:border-blue-900 hover:border-2 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center">
+            <option class="block px-4 py-2 hover:bg-gray-100"> </option>
+            @foreach($staffes as $staff)
+                <option class="block px-4 py-2 hover:bg-gray-100">
+                    {{$staff->Staff}}
+                </option>
+            @endforeach
+        </select>
+        <span class="mx-2 xl:mx-auto text-lg font-normal text-sky-900 xl:ml-8">Стаж</span>
+        <input type="number" class="bg-white border border-blue-600 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-[300px] p-2.5" name="staff1" placeholder="минимальный опыт">
+        <input type="number" class="bg-white border border-blue-600 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-[300px] p-2.5" name="staff2" placeholder="максимальный опыт">
+        <button type="submit" class="w-[150px] justify-center items-center py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">Применить</button>
     </form>
     <div class="flex flex-wrap my-4 ml-2 lg:ml-auto justify-center">
         @if ($resumes)

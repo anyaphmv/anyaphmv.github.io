@@ -22,6 +22,9 @@ Route::get('/vacancy', [IndexController::class, 'showVacancyPage'])->name('vacan
 Route::get('/about', [IndexController::class, 'showAboutPage'])->name('aboutPage');
 Route::get('/page/{vacancy_id}', [IndexController::class, 'showThisVacancy'])->name('showThisVacancy');
 Route::get('/search', [IndexController::class, 'search'])->name('search');
+Route::get('/searchResum', [HRController::class, 'searchResum'])->name('searchResum');
+Route::get('/filters', [IndexController::class, 'filters'])->name('filters');
+Route::get('/filterRes', [HRController::class, 'filterRes'])->name('filterRes');
 Route::get('/myVacancy/{id}', [CompanyController::class, 'showPageMyVacancy'])->name('showPageMyVacancy');
 Route::get('/addVacancy', [CompanyController::class, 'showPageAddVacancy'])->name('showPageAddVacancy');
 Route::post('/addVacancy/{id}', [CompanyController::class, 'AddVacancy'])->name('AddVacancy');

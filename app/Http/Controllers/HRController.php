@@ -21,15 +21,6 @@ class HRController extends Controller
             return Redirect::route('mainPage')->with(['vacancies'=>$vacancies])->withErrors(['msg' => 'Нет доступа к данной странице!']);
         }
     }
-    public function showAllResume(){
-        $resumes = Resume::paginate(9);
-        $staffes = Resume::select('Staff')->distinct()->get();
-        Return view('allResume')->with(['resumes'=>$resumes,'staffes'=>$staffes]);
-    }
-    public function thisResume($resume_id){
-        $resumes = Resume::findOrFail($resume_id);
-        Return view('thisResume')->with(['resumes' =>$resumes]);;
-    }
     public function AddResume(Request $request){
         $this->validate($request, ['FIO' => 'required|max:255', 'Stage' => 'regex:/(^[0-9]+$)+/', 'Phone' => 'regex:/(^[0-9]{11}+$)+/', 'Staff' => 'required|max:255', 'Discription' => 'required|max:1000']);
         $resumes = new Resume();

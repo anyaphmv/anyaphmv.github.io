@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Resume;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -20,11 +21,19 @@ class IndexController extends Controller
     public function showAboutPage(){
         Return view('about');
     }
-
     public function showThisVacancy($vacancy_id){
         $vacancies = Vacancy::findOrFail($vacancy_id);
         $similars = Vacancy::where('status_id','=','1')->inRandomOrder()->limit(5)->get();
         Return view('thisvacancy')->with(['vacancies' =>$vacancies, 'similars'=>$similars]);;
+    }
+    public function showAllResume(){
+        $resumes = Resume::paginate(9);
+        $staffes = Resume::select('Staff')->distinct()->get();
+        Return view('allResume')->with(['resumes'=>$resumes,'staffes'=>$staffes]);
+    }
+    public function thisResume($resume_id){
+        $resumes = Resume::findOrFail($resume_id);
+        Return view('thisResume')->with(['resumes' =>$resumes]);;
     }
     public function search(Request $request){
         $search =  $request->search;

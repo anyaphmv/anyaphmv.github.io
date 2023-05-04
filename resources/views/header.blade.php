@@ -53,6 +53,9 @@
                     <li>
                         <a href="{{Route('aboutPage')}}" class="text-gray-900 hover:underline">О нас</a>
                     </li>
+                    <li>
+                        <a href="{{Route('showAllResume')}}" class="text-gray-900 hover:underline">Все резюме</a>
+                    </li>
                     @auth
                         @if(Auth::user()->user_role == 1)
                             <li>
@@ -73,9 +76,6 @@
                                 <a href="{{Route('showPageModerate')}}" class="text-gray-900 hover:underline">Проверить вакансии</a>
                             </li>
                         @elseif(Auth::user()->user_role == 4)
-                            <li>
-                                <a href="{{Route('showAllResume')}}" class="text-gray-900 hover:underline">Все резюме</a>
-                            </li>
                             <li>
                                 <a href="{{Route('showADDResume')}}" class="text-gray-900 hover:underline">Добавить резюме</a>
                             </li>

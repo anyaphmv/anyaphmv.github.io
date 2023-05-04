@@ -36,8 +36,8 @@ Route::get('/moderate', [ModeratorController::class, 'showPageModerate'])->name(
 Route::get('/mod/{vacancy_id}', [ModeratorController::class, 'confirm'])->name('confirm');
 Route::get('/moderate/{vacancy_id}', [ModeratorController::class, 'showPageComments'])->name('showPageComments');
 Route::post('/moderate/{vacancy_id}', [ModeratorController::class, 'refusalVacancy'])->name('refusalVacancy');
-Route::get('/resume', [HRController::class, 'showAllResume'])->name('showAllResume');
-Route::get('/resume/{resume_id}', [HRController::class, 'thisResume'])->name('thisResume');
+Route::get('/resume', [IndexController::class, 'showAllResume'])->name('showAllResume');
+Route::get('/resume/{resume_id}', [IndexController::class, 'thisResume'])->name('thisResume');
 Route::get('/addRes', [HRController::class, 'showADDResume'])->name('showADDResume');
 Route::post('/addRes', [HRController::class, 'AddResume'])->name('AddResume');
 Route::get('/updVac/{resume_id}', [HRController::class, 'showUpdResume'])->name('showUpdResume');

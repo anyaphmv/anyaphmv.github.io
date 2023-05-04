@@ -127,7 +127,7 @@
                                     @foreach($resumes as $resume)
                                         @if($resume->colom_id == $col->id and $resume->id_vac == $vacancy->vacancy_id)
                                             <div class="block" id="{{$resume->resume_id}}">
-                                                    <form method="post" action="{{Route('FormRecords',[$resume->resume_id,$vacancy->vacancy_id])}}">
+                                                    <form method="post" action="{{Route('DelRecords',[$resume->resume_id,$vacancy->vacancy_id])}}">
                                                         @csrf
                                                         <div class="flex flex-row border border-1 border-blue-600 p-2 mb-2 w-[210px]">
                                                             <div class="text-sky-900 flex flex-col">

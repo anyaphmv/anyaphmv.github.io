@@ -47,7 +47,7 @@ Route::get('/kanbanboard', [HRController::class, 'showKanban'])->name('showKanba
 Route::post('/newCol', [HRController::class, 'NewCol'])->name('NewCol');
 Route::post('/newCol/{id}', [HRController::class, 'EditCol'])->name('EditCol');
 Route::post('/delCol/{id}', [HRController::class, 'deleteCol'])->name('deleteCol');
-Route::post('/FormRecords/{resume_id}/{vacancy_id}', [HRController::class, 'FormRecords'])->name('FormRecords');
+Route::post('/DelRecords/{resume_id}/{vacancy_id}', [HRController::class, 'DelRecords'])->name('DelRecords');
 Route::post('/AddNewRecord/{colom_id}/{id_vac}', [HRController::class, 'AddNewRecord'])->name('AddNewRecord');
 Route::get('/confirmPage/{vacancy_id}', [CompanyController::class, 'showConfirmPage'])->name('showConfirmPage');
 Route::get('/AgreeRes/{resume_id}/{vacancy_id}', [CompanyController::class, 'AgreeRes'])->name('AgreeRes');

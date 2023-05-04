@@ -108,7 +108,7 @@ class HRController extends Controller
         $countCol = Colomn::count();
         return redirect()->route('showKanban', ['vacancies'=>$vacancies, 'resumes'=>$resumes,'cols'=>$cols, 'countCol'=>$countCol]);
     }
-    public function FormRecords(Request $request, $resume_id, $vacancy_id){
+    public function DelRecords(Request $request, $resume_id, $vacancy_id){
         if($request->input('delete')){
             $res = Resume::find($resume_id);
             $res->colom_id = NULL;

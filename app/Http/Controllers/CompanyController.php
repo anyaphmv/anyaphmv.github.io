@@ -75,7 +75,7 @@ class CompanyController extends Controller
         $myVacancies = Vacancy::where('user_id', '=', $id)->get();
         return redirect()->route('showPageMyVacancy',['id'=>$id])->with(['myVacancies' => $myVacancies]);
     }
-    public function showMessagePage($id){
+    public function showСompletedVacPage($id){
         if (optional(auth()->user())->user_role == 1) {
             if (auth::user()->id == $id) {
                 $resumes = Resume::where('colom_id','=',1)->get();

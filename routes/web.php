@@ -31,7 +31,7 @@ Route::post('/addVacancy/{id}', [CompanyController::class, 'AddVacancy'])->name(
 Route::get('/updateVacancy/{vacancy_id}/{id}', [CompanyController::class, 'showPageUpdateVacancy'])->name('showPageUpdateVacancy');
 Route::post('/updateVacancy/{vacancy_id}/{id}', [CompanyController::class, 'UpdateVacancy'])->name('UpdateVacancy');
 Route::get('/delete/{vacancy_id}/{id}', [CompanyController::class, 'deleteVacancy'])->name('deleteVacancy');
-Route::get('/messages/{id}', [CompanyController::class, 'showMessagePage'])->name('showMessagePage');
+Route::get('/messages/{id}', [CompanyController::class, 'showСompletedVacPage'])->name('showСompletedVacPage');
 Route::get('/moderate', [ModeratorController::class, 'showPageModerate'])->name('showPageModerate');
 Route::get('/mod/{vacancy_id}', [ModeratorController::class, 'confirm'])->name('confirm');
 Route::get('/moderate/{vacancy_id}', [ModeratorController::class, 'showPageComments'])->name('showPageComments');

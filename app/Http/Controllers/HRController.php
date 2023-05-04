@@ -115,12 +115,6 @@ class HRController extends Controller
             $res->id_vac = NULL;
             $res->save();
         }
-        else if($request->input('sent')){
-            $res = Resume::find($resume_id);
-            $res->colom_id = 1;
-            $res->id_vac = $vacancy_id;
-            $res->save();
-        }
         $vacancies = Vacancy::where('status_id','=','1')->get();
         $resumes = Resume::all();
         $cols = Colomn::all();

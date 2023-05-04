@@ -184,9 +184,7 @@
                                                             @if($col->id > 4)
                                                                 <div class="flex flex-col justify-center ml-1">
                                                                     <input type="submit" name="delete" value="Удалить"
-                                                                           class="hover:cursor-pointer text-white bg-blue-700 hover:bg-blue-800 rounded mb-1">
-                                                                    <input type="submit" name="sent" value="Отправить"
-                                                                           class="hover:cursor-pointer text-white bg-blue-700 hover:bg-blue-800 rounded px-1">
+                                                                           class="hover:cursor-pointer text-white bg-blue-700 hover:bg-blue-800 rounded mb-1 p-1">
                                                                 </div>
                                                             @endif
                                                         </div>

@@ -63,7 +63,7 @@
                                     вакансию</a>
                             </li>
                             <li>
-                                <a href="{{Route('showMessagePage', Auth::user()->id)}}" class="text-gray-900 hover:underline">Подобранные резюме</a>
+                                <a href="{{Route('showСompletedVacPage', Auth::user()->id)}}" class="text-gray-900 hover:underline">Подобранные резюме</a>
                             </li>
                             <li>
                                 <a href="{{Route('showDocumentsPage')}}" class="text-gray-900 hover:underline">Документы</a>

@@ -69,7 +69,7 @@
                                 <a href="{{Route('showСompletedVacPage', Auth::user()->id)}}" class="text-gray-900 hover:underline">Подобранные резюме</a>
                             </li>
                             <li>
-                                <a href="{{Route('showDocumentsPage')}}" class="text-gray-900 hover:underline">Документы</a>
+                                <a href="{{Route('showDocumentsPage', Auth::user()->id)}}" class="text-gray-900 hover:underline">Документы</a>
                             </li>
                         @elseif(Auth::user()->user_role == 3)
                             <li>

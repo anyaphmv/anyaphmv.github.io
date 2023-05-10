@@ -65,7 +65,7 @@
                                         <div class="relative bg-white rounded-lg shadow">
                                             <div class="flex items-start justify-between p-4 border-b rounded-t">
                                                 <h3 class="text-xl font-semibold text-gray-900">Удалить столбец
-                                                    "{{$col->title}}"</h3>
+                                                    "{{$col->title}}"?</h3>
                                             </div>
                                             <div class="m-3">
                                                 <div class="flex items-center">
@@ -129,10 +129,9 @@
                                             <div class="block" id="{{$resume->resume_id}}">
                                                     <form method="post" action="{{Route('DelRecords',[$resume->resume_id,$vacancy->vacancy_id])}}">
                                                         @csrf
-                                                        <div class="flex flex-row border border-1 border-blue-600 p-2 mb-2 w-[210px]">
+                                                        <div class="flex flex-col border border-1 border-blue-600 p-2 mb-2 w-[210px]">
                                                             <div class="text-sky-900 flex flex-col">
-                                                                <div class="mb-1">{{$resume->FIO}} ({{$resume->Staff}})
-                                                                </div>
+                                                                <div class="mb-1">{{$resume->FIO}} ({{$resume->Staff}})</div>
                                                                 <a href="{{Route('thisResume',[$resume->resume_id])}}"
                                                                    class="mb-1 underline text-gray-400 hover:no-underline hover:text-sky-900">подробнее</a>
                                                                 @if($col->id == 2)
@@ -182,10 +181,8 @@
                                                                 @endif
                                                             </div>
                                                             @if($col->id > 4)
-                                                                <div class="flex flex-col justify-center ml-1">
                                                                     <input type="submit" name="delete" value="Удалить"
-                                                                           class="hover:cursor-pointer text-white bg-blue-700 hover:bg-blue-800 rounded mb-1 p-1">
-                                                                </div>
+                                                                           class="flex hover:cursor-pointer text-white bg-blue-700 hover:bg-blue-800 rounded justify-center w-full">
                                                             @endif
                                                         </div>
                                                     </form>
@@ -195,7 +192,7 @@
                                             </div>
                                         @endif
                                     @endforeach
-                                    @if($col->id > 4)
+                                    @if($col->id != 2 and $col->id != 3 and $col->id != 4)
                                         <button type="button" data-modal-target="addIN-{{$col->id}}-{{$vacancy->vacancy_id}}" data-modal-toggle="addIN-{{$col->id}}-{{$vacancy->vacancy_id}}" class=" text-white bg-blue-700 hover:bg-blue-800 rounded p-1">Добавить</button>
                                     @endif
                                     <div id="addIN-{{$col->id}}-{{$vacancy->vacancy_id}}" tabindex="-1" aria-hidden="true" class="normal-case fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">

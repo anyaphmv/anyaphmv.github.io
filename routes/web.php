@@ -53,7 +53,7 @@ Route::get('/confirmPage/{vacancy_id}', [CompanyController::class, 'showConfirmP
 Route::get('/AgreeRes/{resume_id}/{vacancy_id}', [CompanyController::class, 'AgreeRes'])->name('AgreeRes');
 Route::get('/refusalRes/{resume_id}/{vacancy_id}', [CompanyController::class, 'refusalRes'])->name('refusalRes');
 Route::post('/revisionResum/{resume_id}/{vacancy_id}', [CompanyController::class, 'revisionResum'])->name('revisionResum');
-Route::get('/documents', [CompanyController::class, 'showDocumentsPage'])->name('showDocumentsPage');
+Route::get('/documents/{id}', [CompanyController::class, 'showDocumentsPage'])->name('showDocumentsPage');
 Route::get('/docAct/{id}', [CompanyController::class, 'pdfExportAct'])->name('pdfExportAct');
 Route::get('/docBill/{id}', [CompanyController::class, 'pdfExportBill'])->name('pdfExportBill');
 Route::get('/movRec/{resume_id}/{colom_id}/{id_vac}', [HRController::class, 'movingRecord'])->name('movingRecord');

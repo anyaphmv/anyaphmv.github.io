@@ -39,6 +39,7 @@ class ModeratorController extends Controller
         }
     }
     public function refusalVacancy(Request $request,$vacancy_id){
+        $this->validate($request, ['comments' => 'required|max:255']);
         $vacansies = Vacancy::find($vacancy_id);
         $vacansies->status_id = 2;
         $vacansies->comments = $request->input('comments');

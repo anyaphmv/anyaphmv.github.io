@@ -89,7 +89,7 @@ class CompanyController extends Controller
                     }
                 }
                 $vacs = array_unique($array);
-            return view('messages')->with(['vacs'=>$vacs]);
+            return view('completedVac')->with(['vacs'=>$vacs]);
             }
         } else {
             $vacancies = Vacancy::where('status_id', '=', '1')->paginate(6);
@@ -136,10 +136,20 @@ class CompanyController extends Controller
         $res->save();
         return redirect()->route('showConfirmPage',[$vacancy_id]);
     }
-    public function showDocumentsPage(){
+    public function showDocumentsPage($id){
         if (optional(auth()->user())->user_role == 1) {
-            $docs = Documents::all();
-            return view('documents')->with(['docs'=>$docs]);
+            if(auth::user()->id == $id){
+                $vacancies = Vacancy::where('user_id', '=', $id)->get();
+                foreach ($vacancies as $vac){
+                    $resumes = Resume::where('id_vac','=',$vac->vacancy_id)->get();
+                    foreach ($resumes as $res){
+                        $documents = Documents::where('id_resume','=',$res->resume_id)->get();
+                        $docs[] = $documents;
+                    }
+                }
+                //dd($docs);
+                return view('documents')->with(['docs'=>$docs]);
+            }
         }
         else{
             $vacancies = Vacancy::where('status_id','=','1')->paginate(6);

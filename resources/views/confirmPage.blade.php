@@ -14,9 +14,9 @@
         @if($resumes)
             @foreach($resumes as $res)
                 <li class="flex flex-col h-[150px] sm:h-auto sm:flex-row justify-between mb-2 text-sky-900 border-bottom border-sky-400">
-                    <div>{{$res->FIO}}</div>
-                    <div class="flex sm:pl-4 md:px-auto">{{$res->Staff}}</div>
-                    <a class="sm:pl-4 md:px-auto hover:underline hover:font-semibold" href="{{Route('thisResume',[$res->resume_id])}}">Подробнее</a>
+                    <div class="w-[205px] lg:w-[250px]">{{$res->FIO}}</div>
+                    <div class="flex w-[250px] md:justify-center">{{$res->Staff}}</div>
+                    <a class="hover:underline hover:font-semibold" href="{{Route('thisResume',[$res->resume_id])}}">Подробнее</a>
                     <div class="sm:pl-4 md:px-auto">
                         <a href="{{Route('AgreeRes',[$res->resume_id, $vacancies->vacancy_id])}}" class="justify-center w-[100px] sm:w-[100px] inline-flex items-center px-1 py-1 sm:px-3 sm:py-2 sm:text-sm text-center text-white bg-green-500 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300">Подвердить</a>
                         <a href="{{Route('refusalRes',[$res->resume_id, $vacancies->vacancy_id])}}" class="justify-center w-[100px] sm:w-[100px] inline-flex items-center px-1 py-1 sm:px-3 sm:py-2 sm:text-sm text-center text-white bg-red-500 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300">Отказать</a>

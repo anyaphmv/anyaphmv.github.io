@@ -12,24 +12,26 @@
     <div class="mt-8 mb-4 text-xl font-semibold tracking-tight text-blue-600 md:text-4xl">Документы</div>
     @if($docs)
         @foreach($docs as $doc)
-            <div class="flex flex-col sm:flex-row justify-between sm:items-center border border-blue-600 h-[170px] sm:h-[50px] p-4 mb-2">
-                <div>{{$doc->resum->FIO}} ({{$doc->resum->Staff}})</div>
-                <div>{{$doc->date}}</div>
+            @foreach($doc as $documents)
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center border border-blue-600 h-[170px] sm:h-[50px] p-4 mb-2">
+                <div class="w-[400px]">{{$documents->resum->FIO}} ({{$documents->resum->Staff}})</div>
+                <div class="w-[100px]">{{$documents->date}}</div>
                 <div>
-                    @if($doc->name_id == 1)
-                        <a href="{{Route('pdfExportAct',[$doc->id])}}"
+                    @if($documents->name_id == 1)
+                        <a href="{{Route('pdfExportAct',[$documents->id])}}"
                             class="justify-center min-w-[270px] sm:w-[300px] inline-flex items-center px-2 py-1 sm:px-3 sm:py-2 sm:text-sm text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                             Скачать акт о выполненных работах (PDF)
                         </a>
                     @endif
-                    @if($doc->name_id == 2)
-                        <a href="{{Route('pdfExportBill',[$doc->id])}}"
+                    @if($documents->name_id == 2)
+                        <a href="{{Route('pdfExportBill',[$documents->id])}}"
                             class="justify-center min-w-[270px] sm:w-[300px] inline-flex items-center px-1 py-1 sm:px-3 sm:py-2 sm:text-sm text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                             Скачать счет (PDF)
                         </a>
                     @endif
                 </div>
             </div>
+            @endforeach
         @endforeach
     @endif
 </div>

@@ -15,6 +15,7 @@
                 Оставьте свой комментарий о том, что в данной вакансии не так. Описать
                 следует подробно, чтобы автор понял в чем заключалась проблема.
             </p>
+            @include('site')
             <input type="text" name="comments"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
         </div>

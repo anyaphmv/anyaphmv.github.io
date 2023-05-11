@@ -135,40 +135,4 @@ class HRController extends Controller
         $countCol = Colomn::count();
         return redirect()->route('showKanban', ['vacancies'=>$vacancies, 'resumes'=>$resumes,'cols'=>$cols, 'countCol'=>$countCol]);
     }
-    public function searchResum(Request $request){
-        $search =  $request->search;
-        $resumes = Resume::where('FIO','like',"%{$search}%")->paginate(9);
-        Return view('allResume')->with(['resumes'=>$resumes]);
-    }
-    public function filterRes(Request $request){
-        $staffes = Resume::select('Staff')->distinct()->get();
-        if($request->staff or $request->staff1 or $request->staff2){
-            if ($request->staff) {
-                $resumes = Resume::where('Staff', '=', $request->staff)->paginate(9);
-            }
-            if ($request->staff1) {
-                $resumes = Resume::where('Stage', '>=', $request->staff1)->paginate(9);
-            }
-            if ($request->staff2) {
-                $resumes = Resume::where('Stage', '<=', $request->staff2)->paginate(9);
-            }
-            if ($request->staff and $request->staff2) {
-                $resumes = Resume::where('Staff', '=', $request->staff)->where('Stage', '<=', $request->staff2)->paginate(9);
-            }
-            if ($request->staff1 and $request->staff2) {
-                $resumes = Resume::where('Stage', '>=', $request->staff1)->where('Stage', '<=', $request->staff2)->paginate(9);
-            }
-            if ($request->staff and $request->staff1) {
-                $resumes = Resume::where('Staff', '=', $request->staff)->where('Stage', '>=', $request->staff1)->paginate(9);
-            }
-            if ($request->staff and $request->staff1 and $request->staff2) {
-                $resumes = Resume::where('Staff', '=', $request->staff)->where('Stage', '>=', $request->staff1)->where('Stage', '<=', $request->staff2)->paginate(9);
-            }
-            Return view('allResume')->with(['resumes'=>$resumes,'staffes'=>$staffes]);
-        }
-        else {
-            $resumes = Resume::paginate(9);
-            return Redirect::route('showAllResume')->with(['resumes'=>$resumes,'staffes'=>$staffes])->withErrors(['msg' => 'Ничего не найдено!']);
-        }
-    }
 }

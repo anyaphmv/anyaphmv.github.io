@@ -80,6 +80,7 @@ class CompanyController extends Controller
             if (auth::user()->id == $id) {
                 $resumes = Resume::where('colom_id','=',1)->get();
                 $vacancies = Vacancy::where('user_id', '=', $id)->get('vacancy_id');
+                $array = [];
                 foreach ($resumes as $res){
                     foreach ($vacancies as $vac) {
                         if ($res->id_vac == $vac->vacancy_id) {
@@ -140,6 +141,7 @@ class CompanyController extends Controller
         if (optional(auth()->user())->user_role == 1) {
             if(auth::user()->id == $id){
                 $vacancies = Vacancy::where('user_id', '=', $id)->get();
+                $docs = [];
                 foreach ($vacancies as $vac){
                     $resumes = Resume::where('id_vac','=',$vac->vacancy_id)->get();
                     foreach ($resumes as $res){
@@ -147,7 +149,6 @@ class CompanyController extends Controller
                         $docs[] = $documents;
                     }
                 }
-                //dd($docs);
                 return view('documents')->with(['docs'=>$docs]);
             }
         }

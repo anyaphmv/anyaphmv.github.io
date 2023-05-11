@@ -4,9 +4,9 @@
             <img src="{{asset('image/logo.jpg')}}" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo"/>
             <span class="text-sky-900 self-center text-xl font-semibold whitespace-nowrap">Rendement</span>
         </a>
-        <div class="flex items-center">
+        <div class="flex items-center font-normal">
             <a href="tel:5541251234"
-               class="mr-6 text-sm font-medium text-gray-500 hover:underline">+7
+               class="mr-6 text-sm text-gray-500 hover:underline">+7
                 (999) 412-12-34</a>
             <ul class="flex">
                 @guest
@@ -42,7 +42,7 @@
 <nav class="bg-gray-50">
         <div class="max-w-screen-xl px-4 py-3 mx-auto md:px-6">
             <div class="flex items-center">
-                <ul class="flex flex-row flex-wrap mt-0 space-x-8 text-sm font-medium">
+                <ul class="flex flex-row flex-wrap mt-0 space-x-8 text-sm font-semibold">
                     <li>
                         <a href="{{Route('mainPage')}}" class="text-gray-900 hover:underline"
                            aria-current="page">Главная</a>
@@ -51,10 +51,10 @@
                         <a href="{{Route('vacancyPage')}}" class="text-gray-900 hover:underline">Вакансии</a>
                     </li>
                     <li>
-                        <a href="{{Route('aboutPage')}}" class="text-gray-900 hover:underline">О нас</a>
+                        <a href="{{Route('showAllResume')}}" class="text-gray-900 hover:underline">Резюме</a>
                     </li>
                     <li>
-                        <a href="{{Route('showAllResume')}}" class="text-gray-900 hover:underline">Все резюме</a>
+                        <a href="{{Route('aboutPage')}}" class="text-gray-900 hover:underline">О нас</a>
                     </li>
                     @auth
                         @if(Auth::user()->user_role == 1)
